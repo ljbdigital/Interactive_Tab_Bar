@@ -1,0 +1,109 @@
+html {
+    box-sizing: border-box; 
+}
+:root {
+    --blobColor: rgb(49, 224, 255);
+    --topGradient: rgb(92, 0, 179) ;
+    --bgColorMenu: linear-gradient(180deg, rgb(92, 0, 179) 0%, rgb(63, 0, 122)  100%); 
+}
+
+body{ 
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background-color: #dcf4ff;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu {
+    margin: 0;
+    display: flex;
+    width: 800px;
+    font-size: 1.5em;
+    padding: 0 2.85em;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background: var(--bgColorMenu);
+}
+.icon{
+    width: 2.6em;
+    height: 2.6em;
+    stroke: white;
+    fill: transparent;
+    stroke-width: 1pt;
+    stroke-miterlimit: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 400;
+    z-index: 10;
+}
+.menu__border{
+    z-index: -1;
+    left: 0;
+    bottom: 99%;
+    width: 10.9em;
+    height: 2.4em;
+    position: absolute;
+    clip-path: url(#menu);
+    will-change: transform;
+    background: var(--topGradient);
+    transition: transform ease-out 0.7s;
+}
+.menuItem{
+    all: unset;
+    flex-grow: 1;
+    z-index: 10;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    border-radius: 50%;
+    align-items: center;
+    will-change: transform;
+    justify-content: center;
+    padding: 0.55em 0 0.85em;
+    transition: transform ease-out 0.7s;   
+}
+.goo {
+    filter: url(#goo);
+    position: absolute;
+    margin-left: -940px;
+    margin-top: -57.5px;
+}
+.circle {
+    width: 90px;
+    height: 90px;
+    background: rgb(49, 224, 255, 1);
+    /* opacity: 0.5; */
+    border-radius: 50%;
+    position: absolute;
+    display: none;
+    margin-top: -16px;
+    z-index: 9;
+    filter: none;
+}
+
+.circle2 {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(49, 224, 255, 1);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 9;
+}
+.menuItem.active {
+    transform: translate3d(0, -.8em , 0);
+}
+.menuItem.active .icon {
+    animation: draw 1.25s reverse;
+}
+
+@keyframes draw {
+    100% {
+        stroke-dashoffset: 400;
+    }
+}
